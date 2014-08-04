@@ -1,0 +1,30 @@
+<div id="chat-container" class="ui grid">
+	<div class="chat thirteen wide column">
+	  <div class="conversation row" ng-controller="ConversationController" >
+			<div class='row' ng-repeat="comment in comments">
+				<div class='user'>{{comment.user}}</div>
+					<div class='comment'>
+        		<pre>{{comment.comment}}</pre>
+        	</div>
+        </div>
+		</div>
+		<div class="editor row">
+			<div class="row">
+				<form name="commentForm" class="ui form" ng-controller="CommentController as cc" ng-submit="commentForm.$valid && cc.addComment()" novalidate>
+		  		<div class="field">
+		  			<textarea id="comment" rows="2" ng-class="{invalid: !commentForm.$valid}"	ng-model="cc.comment.comment" send-on-enter required></textarea>
+		  			<input id="submitComment" type="submit" value="Enviar">
+		  		</div>
+				</form>
+			</div>
+ 		</div>
+	</div>
+	<div class="users three wide column">
+		<div class="card row" ng-controller="UserController">
+			<div class="user" ng-repeat="(key, val) in users">
+				<i class="small gray circle icon" ng-class="{green:!isBusy(val)}"></i>
+				<span ng-class="{bold:isCurrent(val)}">{{val.name}}</span>
+			</div>
+		</div>
+	</div>
+</div>

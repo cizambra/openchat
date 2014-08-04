@@ -1,0 +1,21 @@
+{
+  "main": "index.html",
+  "name": "openchat",
+  "description": "Volatile multiplatform chat",
+  "version": "0.1.0",
+  "keywords": [ "chat", "cht" ],
+  "window": {
+    "title": "CHAT",
+    "icon": "link.png",
+    "toolbar": false,
+    "frame": true,
+    "width": 800,
+    "height": 500,
+    "position": "mouse",
+    "min_width": 800,
+    "min_height": 600
+  },
+  "webkit": {
+    "plugin": true
+  }
+}

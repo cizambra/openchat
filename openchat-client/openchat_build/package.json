@@ -1,0 +1,11 @@
+{
+"name": "openchat-build",
+"version": "0.0.1",
+"description": "Building openchat",
+"author": "cizambra <cizambra@gmail.com>",
+"private": true,
+"dependencies": {
+"grunt": "~0.4.2",
+"grunt-node-webkit-builder": "~0.1.14"
+}
+}

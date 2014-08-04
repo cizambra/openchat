@@ -1,0 +1,91 @@
+<html ng-app="openchat">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Hello World</title>	
+	<link href="./css/semantic.css" type="text/css" rel="stylesheet" media="screen"/>
+	<link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css" />
+	<link rel="stylesheet" href="./css/application.css"/>
+	<script type="text/javascript" src="./javascript/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
+	<script src="https://cdn.socket.io/socket.io-1.0.4.js"></script>
+	<!-- Routing -->
+	<script type="text/javascript" src="./javascript/ui-router.js"></script>	
+	<!-- Styling -->
+	<script type="text/javascript" src="./javascript/semantic.min.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+	<script type="text/javascript">
+
+	var onChatResize = function() {
+		var h = $(".header");
+		var c = $(".content");
+		var b = $("html");
+		var g = c.find("#chat-container");
+		/* Padding (top + bottom) */
+		//var p = parseInt(g.find(".column").css("padding-top"));
+		/* Height */
+		var H = b.height() - h.height();
+
+		c.height(H);
+		/* Content grid resizing */
+		var C = g.find(".chat");
+		var U = g.find(".users");
+		U.height(H);
+		U.css("max-height",H+"px");
+		C.height(H);
+		C.css("max-height",H+"px");
+		/* Conversation row resizing */
+		var K = C.find(".conversation");
+		var e = C.find(".editor");
+		H = H - e.height();
+		K.height(H);
+		K.css("max-height",H+"px");
+	};
+
+	var onLoginResize = function () {
+		var h = $(".header");
+		var c = $(".content");
+		var b = $("html");
+		var g = c.find("#login-container");
+		/* Padding (top + bottom) */
+		//var p = parseInt(g.find(".column").css("padding-top"));
+		/* Height */
+		var H = b.height() - h.height();
+
+		c.height(H);
+		/* Content grid resizing */
+		var C = g.find(".row");
+		
+		C.each(function(){$(this).height((H/3));$(this).css("max-height",(H/3)+"px")});
+		/* Conversation row resizing */
+		//var K = C.find(".conversation");
+		//var e = C.find(".editor");
+		//H = H - e.height();
+		//K.height(H);
+		//K.css("max-height",H+"px");
+	};
+
+	var onResize = function() {
+		onLoginResize();
+		onChatResize();
+	};
+
+	$(document).ready(function(){
+		onLoginResize();
+  	onChatResize();
+	});
+	$(window).bind('resize', onResize);
+	</script>
+</head>
+<body>
+	<div class="ui grid">
+	  <div class="header ten wide column">
+			<h1>OpenChat</h1>
+	  </div>
+	  <div class="metadata six wide column" ui-view="greet">
+		</div>
+	  <div class="content sixteen wide column" ui-view="content">  	
+	  </div>
+	</div>
+	<script type="text/javascript" src="./javascript/app.js"></script>
+</body>
+</html>
