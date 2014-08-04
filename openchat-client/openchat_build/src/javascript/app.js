@@ -4,7 +4,7 @@
 	var app = angular.module("openchat",["ui.router"]);
 
   app.factory('socket', function ($rootScope) {
-    var socket = io.connect('ws://104.131.249.228:1337');
+    var socket = io.connect('ws://localhost:1337');
     return {
       on: function (eventName, callback) {
         socket.on(eventName, function () {  
